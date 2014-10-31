@@ -38,8 +38,7 @@ public class FirstTest {
 	}
 
 	private WebDriver initDriver() {
-		FirefoxDriver firefoxDriver = new FirefoxDriver(DesiredCapabilities.firefox());
-		return firefoxDriver;
+		return new FirefoxDriver();
 	}
 
 	@After
