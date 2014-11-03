@@ -14,7 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class FirstTest {
 	
 	private static final String BASE_URL = "http://localhost:8080/showcase";
-	private WebDriver driver;
+	WebDriver driver;
 	
 	@Before
 	public void init(){
@@ -37,7 +37,7 @@ public class FirstTest {
 		driver.get(BASE_URL);
 	}
 
-	private WebDriver initDriver() {
+	WebDriver initDriver() {
 		return new FirefoxDriver();
 	}
 
