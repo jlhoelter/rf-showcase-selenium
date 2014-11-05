@@ -60,11 +60,11 @@ public class PerformSimpleActionsTest {
 
 	private void openCommandButtonSection() {
 		driver.findElement(By.id("j_idt22")).click();
-//		assertTabExistsWithCaption("Command Button Simple");
+		assertTabExistsWithCaption("Command Button Simple");
 	}
 
 	private void assertTabExistsWithCaption(String caption) {
-		Assert.assertThat(driver.findElement(By.cssSelector(".rf-tab-hdr-tabs .rf-tab-lbl")).getText(),CoreMatchers.equalTo(caption));
+		Assert.assertThat(driver.findElement(By.cssSelector(".navigation .rf-tab-hdr-act .rf-tab-lbl")).getText(),CoreMatchers.equalTo(caption));
 	}
 
 	WebDriver initDriver() {

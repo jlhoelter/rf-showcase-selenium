@@ -4,8 +4,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.junit.After;
@@ -16,10 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
 
 public class DifferentSelectorsTest {
 	
@@ -76,7 +70,6 @@ public class DifferentSelectorsTest {
 	}
 	
 	private void assertExpectedValueArrayMatches(String[] actualValueArray){
-		System.out.println(Arrays.toString(actualValueArray));
 		Assert.assertThat(actualValueArray.length, is(EXPECTED_LENGTH));
 		Assert.assertThat(actualValueArray, equalTo(EXPECTED_VALUES));
 	}

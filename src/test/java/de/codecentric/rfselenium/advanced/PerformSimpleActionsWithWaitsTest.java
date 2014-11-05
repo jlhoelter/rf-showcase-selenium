@@ -3,8 +3,6 @@ package de.codecentric.rfselenium.advanced;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.TimeUnit;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Assert;
@@ -14,13 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.google.common.base.Predicate;
-
-import sun.text.normalizer.CharTrie.FriendAgent;
 
 public class PerformSimpleActionsWithWaitsTest {
 	
@@ -43,9 +36,14 @@ public class PerformSimpleActionsWithWaitsTest {
 	}
 
 	private void assertOutputTextIs(String expected) {
-		WebDriverWait wait = new WebDriverWait(driver, 3);
-		WebElement helloLabel = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("outhello")));
+		WebElement helloLabel = waitForElementIdentifiedBy(By.className("outhello"));
 		assertThat(helloLabel.getText(), equalTo(expected));
+	}
+
+	private WebElement waitForElementIdentifiedBy(By selector) {
+		WebDriverWait wait = new WebDriverWait(driver, 3);
+		WebElement helloLabel = wait.until(ExpectedConditions.presenceOfElementLocated(selector));
+		return helloLabel;
 	}
 
 	private void submit() {
@@ -59,11 +57,11 @@ public class PerformSimpleActionsWithWaitsTest {
 
 	private void openCommandButtonSection() {
 		driver.findElement(By.id("j_idt22")).click();
-//		assertTabExistsWithCaption("Command Button Simple");
+		assertTabExistsWithCaption("Command Button Simple");
 	}
 
 	private void assertTabExistsWithCaption(String caption) {
-		Assert.assertThat(driver.findElement(By.cssSelector(".rf-tab-hdr-tabs .rf-tab-lbl")).getText(),CoreMatchers.equalTo(caption));
+		Assert.assertThat(waitForElementIdentifiedBy(By.cssSelector(".navigation .rf-tab-hdr-act .rf-tab-lbl")).getText(),CoreMatchers.equalTo(caption));
 	}
 
 	WebDriver initDriver() {
