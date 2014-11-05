@@ -1,4 +1,4 @@
-package de.codecentric.rfselenium.basics;
+package de.codecentric.rfselenium.advanced;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -12,9 +12,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PerformSimpleActionsTest {
+import com.google.common.base.Predicate;
+
+import sun.text.normalizer.CharTrie.FriendAgent;
+
+public class PerformSimpleActionsWithWaitsTest {
 	
 	private static final String BASE_URL = "http://localhost:8080/showcase";
 	WebDriver driver;
@@ -35,18 +43,9 @@ public class PerformSimpleActionsTest {
 	}
 
 	private void assertOutputTextIs(String expected) {
-//		waitSomeTime();
-		String actualText = driver.findElement(By.className("outhello")).getText();
-		assertThat(actualText, equalTo(expected));
-	}
-
-	private void waitSomeTime() {
-		// Don't do it that way
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		WebDriverWait wait = new WebDriverWait(driver, 3);
+		WebElement helloLabel = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("outhello")));
+		assertThat(helloLabel.getText(), equalTo(expected));
 	}
 
 	private void submit() {
@@ -68,9 +67,7 @@ public class PerformSimpleActionsTest {
 	}
 
 	WebDriver initDriver() {
-		WebDriver firefoxDriver = new FirefoxDriver();
-		firefoxDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		return firefoxDriver;
+		return new FirefoxDriver();
 	}
 
 	@After
