@@ -7,10 +7,6 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
