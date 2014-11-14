@@ -1,5 +1,6 @@
 package de.codecentric.rfselenium.advanced;
 
+import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
@@ -7,6 +8,7 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +24,6 @@ public class DragDropTest {
 	private static final String ACTIVE_TAB_HEADER_SELECTOR = ".navigation .rf-tab-hdr-act";
 	private static final String DRAG_AND_DROP_MENU_ITEM_ID = "j_idt83";
 	private WebDriver driver;
-	private static final String BASE_URL = "http://localhost:8080/showcase";
 	@ Before
 	public void initDriver(){
 		driver = new FirefoxDriver();
@@ -83,6 +84,11 @@ public class DragDropTest {
 
 	private void clickOnDragAndDropMainMenuItem() {
 		driver.findElement(By.id("j_idt82")).click();
+	}
+	
+	@After
+	public void shutdown(){
+		driver.close();
 	}
 
 }

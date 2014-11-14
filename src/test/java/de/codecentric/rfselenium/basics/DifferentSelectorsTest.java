@@ -1,5 +1,6 @@
 package de.codecentric.rfselenium.basics;
 
+import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -17,7 +18,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DifferentSelectorsTest {
 	
-	private static final String BASE_URL = "http://localhost:8080/showcase";
 	private WebDriver driver;
 	
 	private static final String[] EXPECTED_VALUES = new String[]{"a4j:ajax", "a4j:commandButton", "a4j:commandLink", "a4j:actionListener", "a4j:jsFunction", "a4j:poll", "a4j:push", "a4j:param"};

@@ -1,5 +1,6 @@
 package de.codecentric.rfselenium.advanced;
 
+import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -17,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PerformSimpleActionsWithWaitsTest {
 	
-	private static final String BASE_URL = "http://localhost:8080/showcase";
 	WebDriver driver;
 	
 	@Before
