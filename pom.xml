@@ -59,4 +59,41 @@
 			<version>3.3.2</version>
 		</dependency>
 	</dependencies>
+	
+	<!-- Default Surefire Config excluding Testsuite -->
+	<build>
+		<plugins>
+			<plugin>
+	      		<groupId>org.apache.maven.plugins</groupId>
+			   	<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/testsuite/*</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+ 	</build>
+	
+	<!-- Profile for Jenkins Testsuite -->
+	<profiles>
+		<profile>
+			<id>testsuite</id>
+			 <build>
+			    <plugins>
+			      <plugin>
+			        <groupId>org.apache.maven.plugins</groupId>
+			        <artifactId>maven-surefire-plugin</artifactId>
+			        <configuration>
+			          <excludes>
+			          	<exclude>**/advanced/*</exclude>
+			          	<exclude>**/basics/*</exclude>
+			          	<exclude>**/testdesign/*</exclude>
+			          </excludes>
+			        </configuration>
+			      </plugin>
+			    </plugins>
+			  </build>
+		</profile>
+	</profiles>
 </project>

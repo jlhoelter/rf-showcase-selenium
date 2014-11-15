@@ -16,7 +16,7 @@ public class SeleniumConfiguration {
 		}
 	}
 
-	public static String getBaseUrl() {
+	public static String baseUrl() {
 		return "http://" + hostName() + ":8080/showcase";
 	}
 
