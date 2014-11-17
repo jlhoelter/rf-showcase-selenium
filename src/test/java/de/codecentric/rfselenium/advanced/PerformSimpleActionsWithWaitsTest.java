@@ -70,7 +70,7 @@ public class PerformSimpleActionsWithWaitsTest {
 
 	@After
 	public void tearDownWebDriver(){
-		driver.close();
+		driver.quit();
 	}
 
 }

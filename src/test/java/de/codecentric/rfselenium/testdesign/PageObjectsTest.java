@@ -51,7 +51,7 @@ public class PageObjectsTest {
 	
 	@After
 	public void shutdown(){
-		driver.close();
+		driver.quit();
 	}
 
 }

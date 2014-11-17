@@ -80,7 +80,7 @@ public class DifferentSelectorsTest {
 
 	@After
 	public void tearDownWebDriver(){
-		driver.close();
+		driver.quit();
 	}
 
 }

@@ -42,6 +42,6 @@ public class FirstTest {
 
 	@After
 	public void tearDownWebDriver(){
-		driver.close();
+		driver.quit();
 	}
 }

@@ -75,7 +75,7 @@ public class PerformSimpleActionsTest {
 
 	@After
 	public void tearDownWebDriver(){
-		driver.close();
+		driver.quit();
 	}
 
 }

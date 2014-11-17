@@ -88,7 +88,7 @@ public class DragDropTest {
 	
 	@After
 	public void shutdown(){
-		driver.close();
+		driver.quit();
 	}
 
 }
