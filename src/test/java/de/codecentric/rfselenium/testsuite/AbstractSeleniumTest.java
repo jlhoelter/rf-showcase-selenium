@@ -15,7 +15,7 @@ public abstract class AbstractSeleniumTest {
 	
 	@After
 	public void shutdown(){
-		driver.close();
+		driver.quit();
 	}
 
 	public WebDriver getDriver() {

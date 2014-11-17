@@ -43,11 +43,16 @@ public class DriverFactory {
 	}
 
 	private static RemoteWebDriver firefoxRemoteDriver(){
-		return getRemoteDriverFor(firefox());
+		DesiredCapabilities firefox = new DesiredCapabilities();
+		firefox.setBrowserName(firefox().getBrowserName());
+		
+		return getRemoteDriverFor(firefox);
 	}
 	
 	private static RemoteWebDriver ieRemoteDriver(){
-		return getRemoteDriverFor(internetExplorer());
+		DesiredCapabilities ie = new DesiredCapabilities();
+		ie.setBrowserName(internetExplorer().getBrowserName());
+		return getRemoteDriverFor(ie);
 	}
 
 
