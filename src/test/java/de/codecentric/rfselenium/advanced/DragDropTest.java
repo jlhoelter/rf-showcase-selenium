@@ -21,70 +21,38 @@ import org.openqa.selenium.interactions.Actions;
 
 public class DragDropTest {
 
-	private static final String ACTIVE_TAB_HEADER_SELECTOR = ".navigation .rf-tab-hdr-act";
-	private static final String DRAG_AND_DROP_MENU_ITEM_ID = "j_idt83";
 	private WebDriver driver;
+	
 	@ Before
 	public void initDriver(){
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get(BASE_URL);
+		// Driver mit implizitem Warten initialisieren
 	}
 	
 	@Test
 	public void dragFromSourceAndDropToPHPFrameworks(){
 		openDragAndDropSection();
 		dragAndDropFirstElementToPHPFrameworks();
-		Assert.assertThat(phpFrameworkList().size(), is(1));
+		
+		// Prüfen, dass die Liste der PHP Frameworks nun einen Eintrag enthält
 	}
 
-	private List<WebElement> phpFrameworkList() {
-		return phpFrameworksArea().findElements(By.tagName("tr"));
-	}
 
 	private void dragAndDropFirstElementToPHPFrameworks() {
-		WebElement firstFramework = getFrameworkList().get(0);
-		WebElement phpFrameworksArea = phpFrameworksArea();
+		/* 
+		 * Erstes Element aus der Auswahlliste nehmen und per Drag and Drop auf
+		 * die Liste der PHP Frameworks ziehen 
+		 */
 		
-		dragAndDrop(firstFramework, phpFrameworksArea);
 		
 	}
 
-	private WebElement phpFrameworksArea() {
-		WebElement phpFrameworksArea = driver.findElement(By.id("form:phptable"));
-		return phpFrameworksArea;
-	}
-
-	private void dragAndDrop(WebElement draggableElement, WebElement target) {
-		Actions actionBuilder = new Actions(driver);
-		Action dragAndDrop = actionBuilder.clickAndHold(draggableElement).moveToElement(target).
-		release(target).build();
-		dragAndDrop.perform();
-	}
-
-	private List<WebElement> getFrameworkList() {
-		List<WebElement> frameworks = driver.findElements(By.className("ui-draggable"));
-		Assert.assertThat(frameworks.size(), greaterThanOrEqualTo(1));
-		return frameworks;
-		
-	}
 
 	private void openDragAndDropSection() {
-		openDragAndDropMenuItem().click();
-		String activeTagHeaderText = driver.findElement(By.cssSelector(ACTIVE_TAB_HEADER_SELECTOR)).getText();
-		Assert.assertThat(activeTagHeaderText, equalTo("Drag and Drop usage example"));
+		// Drag and Drop Bereich öffnen
+		// Prüfen, ob der Bereich geöffnet wurde
 	}
 
-	private WebElement openDragAndDropMenuItem() {
-		clickOnDragAndDropMainMenuItem();
-		WebElement dragAndDropMenuItem = driver.findElement(By.id(DRAG_AND_DROP_MENU_ITEM_ID));
-		Assert.assertThat(dragAndDropMenuItem.getText(), equalTo("Drag and Drop"));
-		return dragAndDropMenuItem;
-	}
 
-	private void clickOnDragAndDropMainMenuItem() {
-		driver.findElement(By.id("j_idt82")).click();
-	}
 	
 	@After
 	public void shutdown(){

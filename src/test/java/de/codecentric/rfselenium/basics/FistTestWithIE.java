@@ -7,7 +7,8 @@ public class FistTestWithIE extends FirstTest {
 
 	@Override
 	WebDriver initDriver() {
-		return new InternetExplorerDriver();
+		// TODO
+		return null;
 	}
 
 	

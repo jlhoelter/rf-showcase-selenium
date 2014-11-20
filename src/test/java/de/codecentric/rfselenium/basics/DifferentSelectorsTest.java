@@ -20,13 +20,12 @@ public class DifferentSelectorsTest {
 	
 	private WebDriver driver;
 	
-	private static final String[] EXPECTED_VALUES = new String[]{"a4j:ajax", "a4j:commandButton", "a4j:commandLink", "a4j:actionListener", "a4j:jsFunction", "a4j:poll", "a4j:push", "a4j:param"};
-	private static final int EXPECTED_LENGTH = EXPECTED_VALUES.length;
+	private static final String[] EXPECTED_NAVIGATION_ITEMS = new String[]{"a4j:ajax", "a4j:commandButton", "a4j:commandLink", "a4j:actionListener", "a4j:jsFunction", "a4j:poll", "a4j:push", "a4j:param"};
+	private static final int EXPECTED_LENGTH = EXPECTED_NAVIGATION_ITEMS.length;
 	
 	@Before
 	public void init(){
-		driver = initDriver();
-		driver.get(BASE_URL);
+		//TODO: WebDriver initialisieren, Showcase URL aufrufen
 	}
 	
 	@Test
@@ -46,41 +45,29 @@ public class DifferentSelectorsTest {
 	
 
 	private String[] getAjaxActionSectionValuesById() {
-		return driver.findElement(By.id("j_idt20:cnt")).getText().split("\n");
+		// TODO: Texte aller Navigationslinks aus dem Bereich "Ajax Action" über Id ermitteln
+		return new String[]{};
 	}
 	
 	private String[] getAjaxActionSectionValuesByCssClass() {
-		return textsFrom(driver.findElements(By.className("rf-pm-itm-lbl")));
+		// TODO: Texte aller Navigationslinks aus dem Bereich "Ajax Action" über CSS Klasse ermitteln
+		return new String[]{};
 	}
 	
 	private String[] getAjaxActionSectionValuesByCssSelector() {
-		return textsFrom(driver.findElements(By.cssSelector(".rf-pm-top-gr-cnt .rf-pm-itm-lbl")));
+		// TODO: Texte aller Navigationslinks aus dem Bereich "Ajax Action" über CSS Selektor ermitteln
+		return new String[]{};
 	}
 	
-	
-	private String[] textsFrom(List<WebElement> elements){
-		ArrayList<String> texts = new ArrayList<String>();
-		for(WebElement element : elements){
-			if(element.isDisplayed()){
-				texts.add(element.getText());
-			}
-		}
-		
-		return texts.toArray(new String[texts.size()]);
-	}
 	
 	private void assertExpectedValueArrayMatches(String[] actualValueArray){
 		Assert.assertThat(actualValueArray.length, is(EXPECTED_LENGTH));
-		Assert.assertThat(actualValueArray, equalTo(EXPECTED_VALUES));
+		Assert.assertThat(actualValueArray, equalTo(EXPECTED_NAVIGATION_ITEMS));
 	}
 	
-	WebDriver initDriver() {
-		return new FirefoxDriver();
-	}
-
 	@After
 	public void tearDownWebDriver(){
-		driver.quit();
+		//TODO Webdriver beenden
 	}
 
 }

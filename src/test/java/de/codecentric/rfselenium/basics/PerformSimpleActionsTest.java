@@ -4,16 +4,11 @@ import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.concurrent.TimeUnit;
-
-import org.hamcrest.CoreMatchers;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class PerformSimpleActionsTest {
 	
@@ -28,54 +23,42 @@ public class PerformSimpleActionsTest {
 	@Test
 	public void testUseSimpleCommandButton(){
 		openCommandButtonSection();
-		String myName = "Jan";
+		String myName = "Your Name...";
 		enterInInputField(myName);
 		submit();
 		assertOutputTextIs("Hello "+myName+" !");		
 	}
 
 	private void assertOutputTextIs(String expected) {
-//		waitSomeTime();
-		String actualText = driver.findElement(By.className("outhello")).getText();
-		assertThat(actualText, equalTo(expected));
-	}
-
-	private void waitSomeTime() {
-		// Don't do it that way
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		// Die Grußfromel prüfen		
 	}
 
 	private void submit() {
-		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		// Submitbutton klicken/ Formular submitten
 	}
 
 	private void enterInInputField(String text) {
-		driver.findElement(By.xpath("//input[@type='text']")).sendKeys(text);
+
 	}
 
 
 	private void openCommandButtonSection() {
-		driver.findElement(By.id("j_idt22")).click();
+		// TODO: Menüpunkt Ajax Action -> a4j:commandButton anklicken
 		assertTabExistsWithCaption("Command Button Simple");
 	}
 
 	private void assertTabExistsWithCaption(String caption) {
-		Assert.assertThat(driver.findElement(By.cssSelector(".navigation .rf-tab-hdr-act .rf-tab-lbl")).getText(),CoreMatchers.equalTo(caption));
+		//TODO Tabüberschrift im Command Button Bereich ermitteln und überprüfen
 	}
 
 	WebDriver initDriver() {
-		WebDriver firefoxDriver = new FirefoxDriver();
-		firefoxDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		return firefoxDriver;
+		//TODO
+		return null;
 	}
 
 	@After
 	public void tearDownWebDriver(){
-		driver.quit();
+		//TODO
 	}
 
 }
