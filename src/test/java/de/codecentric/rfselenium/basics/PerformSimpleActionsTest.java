@@ -1,13 +1,8 @@
 package de.codecentric.rfselenium.basics;
 
-import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PerformSimpleActionsTest {
@@ -16,8 +11,7 @@ public class PerformSimpleActionsTest {
 	
 	@Before
 	public void init(){
-		driver = initDriver();
-		driver.get(BASE_URL);
+
 	}
 
 	@Test
@@ -51,10 +45,6 @@ public class PerformSimpleActionsTest {
 		//TODO Tabüberschrift im Command Button Bereich ermitteln und überprüfen
 	}
 
-	WebDriver initDriver() {
-		//TODO
-		return null;
-	}
 
 	@After
 	public void tearDownWebDriver(){

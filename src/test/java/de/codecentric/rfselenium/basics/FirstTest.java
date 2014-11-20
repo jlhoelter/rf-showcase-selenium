@@ -1,5 +1,9 @@
 package de.codecentric.rfselenium.basics;
 
+import static de.codecentric.rfselenium.util.StaticHelper.BASE_URL;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,17 +20,20 @@ public class FirstTest {
 
 	@Test
 	public void checkShowcaseIsRunning(){
-		navigateToBaseUrl(driver);
+		openWebsiteWith(BASE_URL);
 		String expectedWelcomeText = "Welcome To RichFaces 4.x Demo";
 		assertThatWelcomeTextMatches(expectedWelcomeText);
 	}
 
 	private void assertThatWelcomeTextMatches(String expectedWelcomeText) {
+		String actualWelcomeText = "";
 		//TODO: Willkommenstext auslesen		
 		//TODO: Text überprüfen
+		
+		assertThat(actualWelcomeText, is(expectedWelcomeText));
 	}
 
-	private void navigateToBaseUrl(WebDriver driver) {
+	private void openWebsiteWith(String baseUrl) {
 		// TODO
 	}
 
