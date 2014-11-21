@@ -25,10 +25,10 @@ public class PageObjectsTest {
 	}
 	
 	@Test
-	public void commandButtonTestFluentWithPageObjectFactory(){
+	public void commandButtonTestWithPageObjectFactory(){
 		
 		/*
-		 * Alle nötigen Page Objects mit Fluent API implementieren und über
+		 * Alle nötigen Page Objects über
 		 * die PageFactory initialisieren.
 		 * Test:
 		 * 1. a4j:commandButton Bereich öffnen
