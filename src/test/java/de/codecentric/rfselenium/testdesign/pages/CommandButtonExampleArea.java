@@ -26,29 +26,27 @@ public class CommandButtonExampleArea {
 	
 	@FindBy(className="outhello")
 	private WebElement greetingField;
-	
-	
-	
-	
 
 	public CommandButtonExampleArea(WebDriver driver) {
 		initElements(driver, this);
 	}
 	
-	public void typeNameInInputField(String text){
+	public CommandButtonExampleArea typeNameInInputField(String text){
 		inputField.clear();
 		inputField.sendKeys(text);
+		return this;
 	}
 	
-	public void submit(){
+	public CommandButtonExampleArea submit(){
 		submitButton.click();
+		return this;
 	}
 	
 	public String getTabTitle(){
 		return commandButtonExampeTab.getText();
 	}
 	
-	public String getGreetinText(){
+	public String getGreetingText(){
 		return greetingField.getText();
 	}
 	

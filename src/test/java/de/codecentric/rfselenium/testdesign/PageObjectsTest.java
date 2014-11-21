@@ -32,20 +32,19 @@ public class PageObjectsTest {
 	public void openCommandButtonSectionTest(){
 		LeftNavigationPageObjectSimple leftNavigation = new LeftNavigationPageObjectSimple(driver);
 		leftNavigation.openCommandButtonSection();
-		assertThat(leftNavigation.getActiveTab().getText(),equalTo(EXPECTED_TAB_TITLE));
+		assertThat(leftNavigation.openCommandButtonSection().getActiveTabText(),equalTo(EXPECTED_TAB_TITLE));
 	}
 	
 	@Test
-	public void commandButtonTestFluentWithPageObjectFactory(){
+	public void commandButtonTestWithPageObjectFactory(){
 		LeftNavigationPageObjectAdvanced leftNavigation = new LeftNavigationPageObjectAdvanced(driver);
 		
 		CommandButtonExampleArea openCommandButtonExampleArea = leftNavigation.openCommandButtonExampleArea();
 		assertThat(openCommandButtonExampleArea.getTabTitle(), equalTo(EXPECTED_TAB_TITLE));
 		
-		openCommandButtonExampleArea.typeNameInInputField("Jan");
-		openCommandButtonExampleArea.submit();
+		openCommandButtonExampleArea.typeNameInInputField("Jan").submit();
 		
-		assertThat(openCommandButtonExampleArea.getGreetinText(), equalTo("Hello Jan !"));
+		assertThat(openCommandButtonExampleArea.getGreetingText(), equalTo("Hello Jan !"));
 		
 	}
 	

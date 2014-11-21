@@ -14,12 +14,12 @@ public class LeftNavigationPageObjectSimple {
 		this.driver = driver;
 	}
 
-	public void openCommandButtonSection(){
+	public LeftNavigationPageObjectSimple openCommandButtonSection(){
 		driver.findElement(commandButtonMenuItemSelector).click();
+		return this;
 	}
 	
-	public WebElement getActiveTab() {
-		
-		return driver.findElement(activeTabSelector);
+	public String getActiveTabText() {
+		return driver.findElement(activeTabSelector).getText();
 	}
 }
