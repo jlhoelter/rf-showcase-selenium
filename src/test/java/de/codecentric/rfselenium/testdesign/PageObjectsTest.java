@@ -24,7 +24,7 @@ public class PageObjectsTest {
 	@Before
 	public void initDriver(){
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		driver.get(BASE_URL);
 	}
 	
@@ -43,7 +43,6 @@ public class PageObjectsTest {
 		assertThat(openCommandButtonExampleArea.getTabTitle(), equalTo(EXPECTED_TAB_TITLE));
 		
 		openCommandButtonExampleArea.typeNameInInputField("Jan").submit();
-		
 		assertThat(openCommandButtonExampleArea.getGreetingText(), equalTo("Hello Jan !"));
 		
 	}
